@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #11234B;
+  --color-secondary: #F3ECE1;
+  --color-tertiary: #0C1A3A;
+  --color-footers: #212121;
+  --color-bg-blue: #4B6EBD;
+  --color-bg-light-blue: #1A2E5A;
+  --color-bg-grey: #DCDCDC;
+  --color-bg-foggy-pith: #FBF5ED;
+  --color-black-wash: #0A0A0F;
+  /* Text */
+  --color-scroll-text: #0C1A3A;
+  --color-grey-text: #4B4B4B;
+  --color-brown: #D3B797;
+  --color-light: #FFFFFF;
+  --color-charcoal: #2E2E2E;
+  --color-lightbrown: #D3B797;
+  --color-Pinball: #D3D3D3;
+  --color-dimgrey: #908E8A;
+  --color-milk-jug: #FAF7F2;
+  --color-footer-text: #7B7B7B;
+
+  /* borders */
+  --color-icon: #282828;
+  --color-black-border: #393939;
+
+  /* font families */
+  --font-instrumentserif: "instrument-serif", "sans-serif";
+  --font-square-peg: "squarePeg", "sans-serif";
+  --font-cormorant: "var(--font-cormorant)", serif;
+}
+
+
+
+@layer {
+  .scroll-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    border: none;
+  }
+
+  .scroll-text {
+    @media (min-width: 768px) {
+      animation: scroll-right-big 60s linear infinite;
+    }
+
+    @media (max-width: 767px) {
+      animation: scroll-right-big 18s linear infinite;
+    }
+  }
+
+  @keyframes scroll-right-big {
+    from {
+      transform: translateX(-100vw);
+    }
+
+    to {
+      transform: translateX(100vw);
+    }
+  }
+}
+
+@media print {
+
+  /* Hide standard screen elements */
+  .print-hidden,
+  aside,
+  header,
+  nav,
+  button,
+  select,
+  input,
+  .fixed,
+  .backdrop-blur-sm,
+  .backdrop-blur-xs,
+  .toast {
+    display: none !important;
+  }
+
+  /* Reset layout structure for printing */
+  html,
+  body,
+  #__next,
+  body>div,
+  .bg-\[\#102554\],
+  .bg-\[\#081A42\],
+  div {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Ensure the main container is visible but styled for print */
+  main {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  /* Target the invoice container to show and span full page */
+  .printable-invoice-container {
+    display: block !important;
+    visibility: visible !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    z-index: 9999999 !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 15mm 10mm 15mm 10mm;
+  }
+}
